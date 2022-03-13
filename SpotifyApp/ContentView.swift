@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SpotifyApp
-//
-//  Created by Illanicz Barnabás on 2022. 03. 12..
-//
-
 import SwiftUI
 
 struct ContentView: View {
