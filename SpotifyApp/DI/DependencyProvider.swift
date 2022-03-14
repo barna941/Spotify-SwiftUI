@@ -24,7 +24,7 @@ final class NetworkAssembly: Assembly {
         container.register(NetworkClientProtocol.self) { r in
             NetworkClient(interceptor: r.resolve(RequestInterceptor.self)!)
         }
-        container.register(RequestInterceptor.self) { r in
+        container.register(RequestInterceptor.self) { _ in
             ClientRequestInterceptor()
         }
         container.register(SearchApiProtocol.self) { r in
@@ -35,5 +35,14 @@ final class NetworkAssembly: Assembly {
 
 final class SearchAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(SearchInteractorProtocol.self) { r in
+            SearchInteractor(searchApi: r.resolve(SearchApiProtocol.self)!)
+        }
+        container.register(SearchViewModel.self) { r in
+            SearchViewModel(interactor: r.resolve(SearchInteractorProtocol.self)!)
+        }
+        container.register(SearchRouter.self) { _ in
+            SearchRouter()
+        }
     }
 }

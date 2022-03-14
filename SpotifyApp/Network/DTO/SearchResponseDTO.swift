@@ -28,6 +28,7 @@ struct AlbumDTO: Decodable {
         case id
         case totalTracks = "total_tracks"
         case artists
+        case images
         case name
         case releaseDate = "release_date"
     }
@@ -35,6 +36,7 @@ struct AlbumDTO: Decodable {
     let id: String
     let totalTracks: Int
     let artists: [ArtistDTO]
+    let images: [ImageDTO]?
     let name: String
     let releaseDate: String
 }
