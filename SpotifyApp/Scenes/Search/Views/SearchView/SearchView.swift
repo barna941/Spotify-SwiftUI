@@ -6,6 +6,9 @@ struct SearchView<Router: SearchRouting, ViewModel: SearchViewModelProtocol>: Vi
     @StateObject
     var viewModel: ViewModel
 
+    @State
+    private var selectedResultType: SearchModel.SearchType = .artist
+
     private let topInset: CGFloat = 104
 
     var body: some View {
@@ -13,18 +16,11 @@ struct SearchView<Router: SearchRouting, ViewModel: SearchViewModelProtocol>: Vi
             ZStack(alignment: .top) {
                 Color.background.ignoresSafeArea()
 
-                ScrollView {
-                    LazyVStack {
-                        ForEach(0..<100) { item in
-//                            Text("Lorem ipsum dolor sit amet")
-                            Image(systemName: "music.note.list")
-                                .resizable()
-                                .frame(width: 120, height: 120)
-                                .foregroundColor(Color.textPrimary)
-                        }
-                    }
-                    .padding(.top, topInset)
-                }
+                SearchResultsView(
+                    topInset: topInset,
+                    selectedResultType: $selectedResultType,
+                    searchResults: Binding(get: { viewModel.searchResults })
+                )
 
                 VisualEffectView(effect: UIBlurEffect(style: .dark))
                     .ignoresSafeArea()
@@ -32,7 +28,7 @@ struct SearchView<Router: SearchRouting, ViewModel: SearchViewModelProtocol>: Vi
 
                 VStack {
                     SearchTextFieldView(searchText: $viewModel.searchText)
-                    SearchResultSelectorView()
+                    SearchResultSelectorView(selectedType: $selectedResultType)
                 }
             }
             .navigationBarHidden(true)

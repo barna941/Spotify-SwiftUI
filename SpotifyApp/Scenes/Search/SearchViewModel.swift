@@ -23,7 +23,7 @@ final class SearchViewModel: SearchViewModelProtocol {
     init(interactor: SearchInteractorProtocol) {
         self.interactor = interactor
 
-//        bindSearch()
+        bindSearch()
         bindNavigation()
     }
 

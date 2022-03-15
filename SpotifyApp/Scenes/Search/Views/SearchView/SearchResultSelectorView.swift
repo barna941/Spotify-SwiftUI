@@ -1,11 +1,9 @@
 import SwiftUI
 
 struct SearchResultSelectorView: View {
-//    @Binding
-//    var searchType: SearchModel.SearchType
 
-    @State
-    var selectedType: SearchModel.SearchType = .album
+    @Binding
+    var selectedType: SearchModel.SearchType
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -32,7 +30,7 @@ struct SearchResultSelectorView: View {
 
 struct SearchResultSelectorView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultSelectorView()
+        SearchResultSelectorView(selectedType: .constant(.album))
             .background(Color.background)
     }
 }

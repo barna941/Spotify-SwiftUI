@@ -39,6 +39,7 @@ final class NetworkClient: NetworkClientProtocol {
                     self?.debugLog(data: data)
                     return data
                 case let .failure(error):
+                    print(error)
                     throw error
                 }
             }

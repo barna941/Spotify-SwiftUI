@@ -16,12 +16,13 @@ enum SearchModel {
     }
 
     enum SearchType: String, Identifiable, CaseIterable, Hashable {
-        case album
         case artist
-        case playlist
+        case album
         case track
+        case playlist
 
         var id: String { rawValue }
+        var name: String { rawValue }
     }
 }
 
@@ -58,4 +59,8 @@ extension SearchModel {
         let name: String
         let imageUrl: String?
     }
+}
+
+extension String {
+    var asUrl: URL? { URL(string: self) }
 }

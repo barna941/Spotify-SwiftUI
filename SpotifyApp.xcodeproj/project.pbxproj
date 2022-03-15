@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F8DF5C9A27E0B3CC00CF2FAE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5C9927E0B3CC00CF2FAE /* SearchResultsView.swift */; };
+		F8DF5C9C27E0BA4A00CF2FAE /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5C9B27E0BA4A00CF2FAE /* BindingExtensions.swift */; };
+		F8DF5C9E27E0BE1B00CF2FAE /* ArtistsResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5C9D27E0BE1B00CF2FAE /* ArtistsResultView.swift */; };
+		F8DF5CA027E129BB00CF2FAE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5C9F27E129BB00CF2FAE /* ImageLoader.swift */; };
+		F8DF5CA227E129FF00CF2FAE /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5CA127E129FF00CF2FAE /* ImageCache.swift */; };
+		F8DF5CA527E12A4A00CF2FAE /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5CA427E12A4A00CF2FAE /* AsyncImageView.swift */; };
+		F8DF5CA827E12B9A00CF2FAE /* ArtistResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF5CA727E12B9A00CF2FAE /* ArtistResultRow.swift */; };
 		F8EB61C527DD17A600342898 /* SpotifyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EB61C427DD17A600342898 /* SpotifyAppApp.swift */; };
 		F8EB61C927DD17AA00342898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EB61C827DD17AA00342898 /* Assets.xcassets */; };
 		F8EB61CC27DD17AA00342898 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EB61CB27DD17AA00342898 /* Preview Assets.xcassets */; };
@@ -55,6 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F8DF5C9927E0B3CC00CF2FAE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		F8DF5C9B27E0BA4A00CF2FAE /* BindingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtensions.swift; sourceTree = "<group>"; };
+		F8DF5C9D27E0BE1B00CF2FAE /* ArtistsResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsResultView.swift; sourceTree = "<group>"; };
+		F8DF5C9F27E129BB00CF2FAE /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		F8DF5CA127E129FF00CF2FAE /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		F8DF5CA427E12A4A00CF2FAE /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		F8DF5CA727E12B9A00CF2FAE /* ArtistResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistResultRow.swift; sourceTree = "<group>"; };
 		F8EB61C127DD17A600342898 /* SpotifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8EB61C427DD17A600342898 /* SpotifyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAppApp.swift; sourceTree = "<group>"; };
 		F8EB61C827DD17AA00342898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +128,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F8DF5CA327E12A4000CF2FAE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8DF5CA427E12A4A00CF2FAE /* AsyncImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8DF5CA627E12B8C00CF2FAE /* Artists */ = {
+			isa = PBXGroup;
+			children = (
+				F8DF5C9D27E0BE1B00CF2FAE /* ArtistsResultView.swift */,
+				F8DF5CA727E12B9A00CF2FAE /* ArtistResultRow.swift */,
+			);
+			path = Artists;
+			sourceTree = "<group>";
+		};
 		F8EB61B827DD17A500342898 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +219,7 @@
 		F8EB61F527DD1A6800342898 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F8DF5CA327E12A4000CF2FAE /* Views */,
 				F8EB620627DE61BB00342898 /* Search */,
 				F8EB621027DF8BB700342898 /* Routing.swift */,
 				F8EB621927DF962F00342898 /* ViewModel.swift */,
@@ -253,10 +285,12 @@
 		F8EB621F27DFDAD400342898 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				F8DF5CA627E12B8C00CF2FAE /* Artists */,
 				F8EB622327DFE10900342898 /* SearchResultSelectorButton.swift */,
 				F8EB621D27DFA6AE00342898 /* SearchResultSelectorView.swift */,
 				F8EB620E27DF8AA700342898 /* SearchView.swift */,
 				F8EB622527DFFFEC00342898 /* SearchTextFieldView.swift */,
+				F8DF5C9927E0B3CC00CF2FAE /* SearchResultsView.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -266,6 +300,9 @@
 			children = (
 				F8EB622127DFDE2900342898 /* Colors.swift */,
 				F8EB622727E0064200342898 /* VisualEffectView.swift */,
+				F8DF5C9B27E0BA4A00CF2FAE /* BindingExtensions.swift */,
+				F8DF5C9F27E129BB00CF2FAE /* ImageLoader.swift */,
+				F8DF5CA127E129FF00CF2FAE /* ImageCache.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -415,13 +452,20 @@
 				F8EB61FD27DD1BC400342898 /* SearchApi.swift in Sources */,
 				F8EB621E27DFA6AF00342898 /* SearchResultSelectorView.swift in Sources */,
 				F8EB622427DFE10900342898 /* SearchResultSelectorButton.swift in Sources */,
+				F8DF5C9A27E0B3CC00CF2FAE /* SearchResultsView.swift in Sources */,
 				F8EB622627DFFFEC00342898 /* SearchTextFieldView.swift in Sources */,
 				F8EB620827DE61D300342898 /* SearchInteractor.swift in Sources */,
+				F8DF5CA827E12B9A00CF2FAE /* ArtistResultRow.swift in Sources */,
 				F8EB620F27DF8AA700342898 /* SearchView.swift in Sources */,
 				F8EB61F927DD1B7600342898 /* SearchRequestDTO.swift in Sources */,
 				F8EB620C27DE661400342898 /* SearchModel.swift in Sources */,
+				F8DF5C9C27E0BA4A00CF2FAE /* BindingExtensions.swift in Sources */,
+				F8DF5CA527E12A4A00CF2FAE /* AsyncImageView.swift in Sources */,
+				F8DF5CA227E129FF00CF2FAE /* ImageCache.swift in Sources */,
+				F8DF5C9E27E0BE1B00CF2FAE /* ArtistsResultView.swift in Sources */,
 				F8EB620A27DE633800342898 /* SearchViewModel.swift in Sources */,
 				F8EB621827DF8C7C00342898 /* ArtistDetailsView.swift in Sources */,
+				F8DF5CA027E129BB00CF2FAE /* ImageLoader.swift in Sources */,
 				F8EB621127DF8BB700342898 /* Routing.swift in Sources */,
 				F8EB621A27DF962F00342898 /* ViewModel.swift in Sources */,
 				F8EB621627DF8C3500342898 /* SearchRouter.swift in Sources */,

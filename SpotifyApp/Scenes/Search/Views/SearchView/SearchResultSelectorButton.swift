@@ -15,11 +15,13 @@ struct SearchResultSelectorButton: View {
     var body: some View {
         Button(
             action: {
-                selectedType = searchType
+                withAnimation {
+                    selectedType = searchType
+                }
                 action()
             },
             label: {
-                Text(searchType.rawValue)
+                Text(searchType.name)
                     .font(.title3)
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))

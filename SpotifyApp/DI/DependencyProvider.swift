@@ -12,10 +12,22 @@ final class DependencyProvider {
     static func registerServices() {
         provider.assembler.apply(
             assemblies: [
+                CoreAssembly(),
                 NetworkAssembly(),
                 SearchAssembly()
             ]
         )
+    }
+}
+
+final class CoreAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(ImageCaching.self) { _ in
+            ImageCache()
+        }.inObjectScope(.container)
+        container.register(ImageLoading.self) { r in
+            ImageLoader(imageCache: r.resolve(ImageCaching.self)!)
+        }
     }
 }
 
