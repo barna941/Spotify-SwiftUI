@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SearchResultSelectorView: View {
+    let searchTypes: [SearchModel.SearchType]
 
     @Binding
     var selectedType: SearchModel.SearchType
@@ -9,7 +10,7 @@ struct SearchResultSelectorView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             ScrollViewReader { proxy in
                 HStack(spacing: 16) {
-                    ForEach(SearchModel.SearchType.allCases, id: \.rawValue) { searchType in
+                    ForEach(searchTypes, id: \.rawValue) { searchType in
                         SearchResultSelectorButton(
                             searchType: searchType,
                             action: {
@@ -30,7 +31,7 @@ struct SearchResultSelectorView: View {
 
 struct SearchResultSelectorView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultSelectorView(selectedType: .constant(.album))
+        SearchResultSelectorView(searchTypes: SearchModel.SearchType.allCases, selectedType: .constant(.album))
             .background(Color.background)
     }
 }

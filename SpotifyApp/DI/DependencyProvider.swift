@@ -22,6 +22,15 @@ final class DependencyProvider {
 
 final class CoreAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(AppRouter.self) { r in
+            AppRouter(dashboardRouter: r.resolve(DashboardRouter.self)!)
+        }
+        container.register(DashboardRouter.self) { r in
+            DashboardRouter(searchRouter: r.resolve(SearchRouter.self)!)
+        }
+        container.register(SearchRouter.self) { r in
+            SearchRouter()
+        }
         container.register(ImageCaching.self) { _ in
             ImageCache()
         }.inObjectScope(.container)

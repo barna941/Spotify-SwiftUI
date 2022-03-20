@@ -4,7 +4,7 @@ import Combine
 @main
 struct SpotifyAppApp: App {
 
-    private let appRouter = AppRouter()
+    private let appRouter: AppRouter<DashboardRouter>
 
     var body: some Scene {
         WindowGroup {
@@ -14,5 +14,6 @@ struct SpotifyAppApp: App {
 
     init() {
         DependencyProvider.registerServices()
+        appRouter = DependencyProvider.resolver.resolve(AppRouter.self)!
     }
 }

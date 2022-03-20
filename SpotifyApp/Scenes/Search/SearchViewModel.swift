@@ -1,24 +1,21 @@
 import Combine
 import Foundation
 
-protocol SearchViewModelProtocol: ViewModelProtocol {
-    var searchText: String { get set }
-    var searchResults: SearchModel.Result { get }
-}
-
-final class SearchViewModel: SearchViewModelProtocol {
+final class SearchViewModel: ObservableObject {
 
     private let interactor: SearchInteractorProtocol
     private var cancellables = Set<AnyCancellable>()
 
     @Published
     var searchText: String = ""
-
     @Published
     var searchResults = SearchModel.Result()
-
     @Published
     var activeNavigation: SearchRoute?
+
+    var searchTypes: [SearchModel.SearchType] {
+        SearchModel.SearchType.allCases
+    }
 
     init(interactor: SearchInteractorProtocol) {
         self.interactor = interactor
@@ -28,7 +25,8 @@ final class SearchViewModel: SearchViewModelProtocol {
     }
 
     private func bindSearch() {
-        $searchText
+        let sharedSearchTextPublisher = $searchText.share()
+        sharedSearchTextPublisher
             .filter { $0.count > 2 }
             .debounce(for: .milliseconds(750), scheduler: DispatchQueue.main)
             .flatMap { searchText in
@@ -38,6 +36,12 @@ final class SearchViewModel: SearchViewModelProtocol {
                 self.resultModel(from: searchResponseDto)
             }
             .replaceError(with: SearchModel.Result())
+            .assign(to: \.searchResults, on: self)
+            .store(in: &cancellables)
+
+        sharedSearchTextPublisher
+            .filter { $0.isEmpty }
+            .map { _ in SearchModel.Result() }
             .assign(to: \.searchResults, on: self)
             .store(in: &cancellables)
     }

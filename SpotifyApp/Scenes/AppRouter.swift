@@ -4,14 +4,18 @@ enum AppRoute {
     case initial
 }
 
-struct AppRouter: Routing {
+struct AppRouter<DashboardRouter: DashboardRouting>: Routing {
 
-    private let searchRouter = SearchRouter()
+    private let dashboardRouter: DashboardRouter
+
+    init(dashboardRouter: DashboardRouter) {
+        self.dashboardRouter = dashboardRouter
+    }
 
     func view(for route: AppRoute) -> some View {
         switch route {
         case .initial:
-            searchRouter.view(for: .search)
+            dashboardRouter.dashboardView()
         }
     }
 }

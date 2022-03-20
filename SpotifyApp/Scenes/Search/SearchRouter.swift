@@ -6,7 +6,7 @@ enum SearchRoute {
     case albumDetails
 }
 
-protocol SearchRouting: Routing {}
+protocol SearchRouting: Routing where Route == SearchRoute {}
 
 struct SearchRouter: SearchRouting {
     func view(for route: SearchRoute) -> some View {

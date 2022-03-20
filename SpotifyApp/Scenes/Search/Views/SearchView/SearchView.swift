@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct SearchView<Router: SearchRouting, ViewModel: SearchViewModelProtocol>: View where Router.Route == SearchRoute {
+struct SearchView<Router: SearchRouting>: View {
     let router: Router
 
     @StateObject
-    var viewModel: ViewModel
+    var viewModel: SearchViewModel
 
     @State
     private var selectedResultType: SearchModel.SearchType = .artist
@@ -28,7 +28,10 @@ struct SearchView<Router: SearchRouting, ViewModel: SearchViewModelProtocol>: Vi
 
                 VStack {
                     SearchTextFieldView(searchText: $viewModel.searchText)
-                    SearchResultSelectorView(selectedType: $selectedResultType)
+                    SearchResultSelectorView(
+                        searchTypes: viewModel.searchTypes,
+                        selectedType: $selectedResultType
+                    )
                 }
             }
             .navigationBarHidden(true)
