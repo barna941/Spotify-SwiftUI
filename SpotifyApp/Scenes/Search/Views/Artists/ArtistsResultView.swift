@@ -6,12 +6,20 @@ struct ArtistsResultView: View {
 
     @Binding
     var artists: [SearchModel.Artist]
+    let didSelectArtist: ((SearchModel.Artist) -> Void)?
 
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: .zero) {
                 ForEach(artists) { artist in
-                    ArtistResultRow(artist: artist)
+                    Button(
+                        action: {
+                            didSelectArtist?(artist)
+                        },
+                        label: {
+                            ArtistResultRow(artist: artist)
+                        }
+                    )
                 }
             }
             .padding(.top, topInset)
@@ -37,7 +45,8 @@ struct ArtistsResultView_Previews: PreviewProvider {
                         name: "TOOL",
                         imageUrl: "https://i.scdn.co/image/ab6761610000f17813f5472b709101616c87cba3"
                     )
-                ])
+                ]),
+                didSelectArtist: nil
             )
         }
     }

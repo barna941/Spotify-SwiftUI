@@ -21,12 +21,12 @@ struct TabBarButton<TabType: TabBarButtonRepresentable>: View {
                 VStack(spacing: 6) {
                     Image(systemName: selectedTab == tab ? tab.selectedImageName : tab.imageName)
                         .resizable()
-                        .foregroundColor(Color.textPrimary)
+                        .foregroundColor(selectedTab == tab ? Color.textPrimary : Color.textSecondary)
                         .frame(width: 24, height: 24)
                         .padding([.top, .leading, .trailing], 4)
                     Text(tab.name)
                         .font(.footnote)
-                        .foregroundColor(Color.textPrimary)
+                        .foregroundColor(selectedTab == tab ? Color.textPrimary : Color.textSecondary)
                         .frame(maxWidth: .infinity)
                 }
             }

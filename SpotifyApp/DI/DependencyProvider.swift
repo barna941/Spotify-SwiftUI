@@ -14,7 +14,10 @@ final class DependencyProvider {
             assemblies: [
                 CoreAssembly(),
                 NetworkAssembly(),
-                SearchAssembly()
+                DashboardAssembly(),
+                HomeAssembly(),
+                SearchAssembly(),
+                LibraryAssembly()
             ]
         )
     }
@@ -22,14 +25,8 @@ final class DependencyProvider {
 
 final class CoreAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(AppRouter.self) { r in
-            AppRouter(dashboardRouter: r.resolve(DashboardRouter.self)!)
-        }
-        container.register(DashboardRouter.self) { r in
-            DashboardRouter(searchRouter: r.resolve(SearchRouter.self)!)
-        }
-        container.register(SearchRouter.self) { r in
-            SearchRouter()
+        container.register(AppCoordinator.self) { r in
+            AppCoordinator(dashboardSceneFactory: r.resolve(DashboardSceneFactoryProtocol.self)!)
         }
         container.register(ImageCaching.self) { _ in
             ImageCache()
@@ -54,16 +51,53 @@ final class NetworkAssembly: Assembly {
     }
 }
 
+final class DashboardAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(DashboardSceneFactoryProtocol.self) { r in
+            DashboardSceneFactory()
+        }
+        container.register(DashboardCoordinator.self) { r in
+            DashboardCoordinator(
+                homeSceneFactory: r.resolve(HomeSceneFactoryProtocol.self)!,
+                searchSceneFactory: r.resolve(SearchSceneFactoryProtocol.self)!,
+                librarySceneFactory: r.resolve(LibrarySceneFactoryProtocol.self)!
+            )
+        }
+    }
+}
+
+final class HomeAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(HomeSceneFactoryProtocol.self) { _ in
+            HomeSceneFactory()
+        }
+    }
+}
+
 final class SearchAssembly: Assembly {
     func assemble(container: Container) {
         container.register(SearchInteractorProtocol.self) { r in
             SearchInteractor(searchApi: r.resolve(SearchApiProtocol.self)!)
         }
-        container.register(SearchViewModel.self) { r in
-            SearchViewModel(interactor: r.resolve(SearchInteractorProtocol.self)!)
+        container.register(SearchViewModel.self) { r, coordinator in
+            SearchViewModel(
+                interactor: r.resolve(SearchInteractorProtocol.self)!,
+                coordinator: coordinator as SearchCoordinator
+            )
         }
-        container.register(SearchRouter.self) { _ in
-            SearchRouter()
+        container.register(SearchSceneFactoryProtocol.self) { _ in
+            SearchSceneFactory()
+        }
+        container.register(SearchCoordinator.self) { r in
+            SearchCoordinator(sceneFactory: r.resolve(SearchSceneFactoryProtocol.self)!)
+        }
+    }
+}
+
+final class LibraryAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(LibrarySceneFactoryProtocol.self) { _ in
+            LibrarySceneFactory()
         }
     }
 }

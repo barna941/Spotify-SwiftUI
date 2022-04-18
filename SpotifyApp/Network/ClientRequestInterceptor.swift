@@ -13,4 +13,4 @@ final class ClientRequestInterceptor: RequestInterceptor {
     }
 }
 
-private let token = "BQBp8SET24WloZNBDExHa3H5SKfJmTVJgLoPA9Idk_nZy4bPbWovMjIWKAWrxcdSceXG4e-kWYroIaYHQk0pDLku2hEUg0Wvs-O91VrBiwKbSc7ixPPhVgUBfJTNJYYHZUkBYkl256c58OK433HYhwvm6pzotXFcRPT-bR3SLrzHJpAzNVxV0v5Nl5zbdNQgbZ3WZsH8yt2YD2va0nvfUKUiKdr_d42sZuY"
+private let token = "BQCz_yEQ93yD-hi_TlX8VVGOKJjou-SmOvrplT1TLUa4xreU-MSd863pq3H-ozIxM-yVJ1TIhCqN9QwEv4jwI7MEVzT5b6CYSxSSUp2SHzE8Q-ackGG9fZidK9HouV-i17V101dV0r3GTTljWUE-dHKus-XzH8V4ptIl1gV96oRBwi_6pts5X3ulf49soyALUvr--gpgqHm0Mt18tIW_14oCX1ANSxY71ZA"

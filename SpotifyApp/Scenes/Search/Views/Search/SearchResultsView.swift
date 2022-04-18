@@ -5,16 +5,20 @@ struct SearchResultsView: View {
 
     @Binding
     var selectedResultType: SearchModel.SearchType
-
     @Binding
     var searchResults: SearchModel.Result
+
+    let didSelectArtist: ((SearchModel.Artist) -> Void)?
 
     var body: some View {
         switch selectedResultType {
         case .artist:
             ArtistsResultView(
                 topInset: topInset,
-                artists: Binding(get: { searchResults.artists })
+                artists: Binding(get: { searchResults.artists }),
+                didSelectArtist: { artist in
+                    didSelectArtist?(artist)
+                }
             )
 
         case .album:
@@ -51,7 +55,8 @@ struct SearchResultsView_Previews: PreviewProvider {
             SearchResultsView(
                 topInset: 0,
                 selectedResultType: .constant(.artist),
-                searchResults: .constant(SearchModel.Result())
+                searchResults: .constant(SearchModel.Result()),
+                didSelectArtist: nil
             )
         }
     }

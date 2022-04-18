@@ -27,7 +27,7 @@ enum SearchModel {
 }
 
 extension SearchModel {
-    struct Artist: Identifiable {
+    struct Artist: Identifiable, Hashable {
         let id: String
         let name: String
         let imageUrl: String?

@@ -4,16 +4,16 @@ import Combine
 @main
 struct SpotifyAppApp: App {
 
-    private let appRouter: AppRouter<DashboardRouter>
+    private let appCoordinator: AppCoordinator
 
     var body: some Scene {
         WindowGroup {
-            appRouter.view(for: .initial)
+            AppCoordinatorView(coordinator: appCoordinator)
         }
     }
 
     init() {
         DependencyProvider.registerServices()
-        appRouter = DependencyProvider.resolver.resolve(AppRouter.self)!
+        appCoordinator = DependencyProvider.resolver.resolve(AppCoordinator.self)!
     }
 }

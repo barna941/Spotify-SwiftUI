@@ -4,6 +4,7 @@ import Foundation
 final class SearchViewModel: ObservableObject {
 
     private let interactor: SearchInteractorProtocol
+    private var coordinator: SearchCoordinatorProtocol
     private var cancellables = Set<AnyCancellable>()
 
     @Published
@@ -11,19 +12,25 @@ final class SearchViewModel: ObservableObject {
     @Published
     var searchResults = SearchModel.Result()
     @Published
-    var activeNavigation: SearchRoute?
+    var selectedResultType: SearchModel.SearchType = .artist
 
     var searchTypes: [SearchModel.SearchType] {
         SearchModel.SearchType.allCases
     }
 
-    init(interactor: SearchInteractorProtocol) {
+    init(interactor: SearchInteractorProtocol, coordinator: SearchCoordinatorProtocol) {
         self.interactor = interactor
+        self.coordinator = coordinator
 
         bindSearch()
-        bindNavigation()
     }
 
+    func didSelectArtist(artist: SearchModel.Artist) {
+        coordinator.currentRoute = .artistDetails(artist)
+    }
+}
+
+extension SearchViewModel {
     private func bindSearch() {
         let sharedSearchTextPublisher = $searchText.share()
         sharedSearchTextPublisher
@@ -44,9 +51,6 @@ final class SearchViewModel: ObservableObject {
             .map { _ in SearchModel.Result() }
             .assign(to: \.searchResults, on: self)
             .store(in: &cancellables)
-    }
-
-    private func bindNavigation() {
     }
 
     // MARK: - Model mapping
