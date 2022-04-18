@@ -35,8 +35,7 @@ struct DashboardCoordinatorView: View {
 
     private func configureTabBarAppearance() {
         let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .clear
+        appearance.configureWithTransparentBackground()
         UITabBar.appearance().standardAppearance = appearance
     }
 }

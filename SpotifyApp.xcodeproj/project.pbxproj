@@ -28,6 +28,8 @@
 		F8E834E3280D82F300231826 /* SearchCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E834E2280D82F300231826 /* SearchCoordinatorView.swift */; };
 		F8E834E5280D91AC00231826 /* HomeSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E834E4280D91AB00231826 /* HomeSceneFactory.swift */; };
 		F8E834E7280D91F300231826 /* LibrarySceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E834E6280D91F300231826 /* LibrarySceneFactory.swift */; };
+		F8E834EA280D98A100231826 /* AlbumResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E834E9280D98A100231826 /* AlbumResultView.swift */; };
+		F8E834EC280D997A00231826 /* AlbumResultGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E834EB280D997A00231826 /* AlbumResultGridItem.swift */; };
 		F8EB61C527DD17A600342898 /* SpotifyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EB61C427DD17A600342898 /* SpotifyAppApp.swift */; };
 		F8EB61C927DD17AA00342898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EB61C827DD17AA00342898 /* Assets.xcassets */; };
 		F8EB61CC27DD17AA00342898 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EB61CB27DD17AA00342898 /* Preview Assets.xcassets */; };
@@ -95,6 +97,8 @@
 		F8E834E2280D82F300231826 /* SearchCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinatorView.swift; sourceTree = "<group>"; };
 		F8E834E4280D91AB00231826 /* HomeSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneFactory.swift; sourceTree = "<group>"; };
 		F8E834E6280D91F300231826 /* LibrarySceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySceneFactory.swift; sourceTree = "<group>"; };
+		F8E834E9280D98A100231826 /* AlbumResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumResultView.swift; sourceTree = "<group>"; };
+		F8E834EB280D997A00231826 /* AlbumResultGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumResultGridItem.swift; sourceTree = "<group>"; };
 		F8EB61C127DD17A600342898 /* SpotifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8EB61C427DD17A600342898 /* SpotifyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAppApp.swift; sourceTree = "<group>"; };
 		F8EB61C827DD17AA00342898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,6 +232,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		F8E834E8280D985C00231826 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				F8E834E9280D98A100231826 /* AlbumResultView.swift */,
+				F8E834EB280D997A00231826 /* AlbumResultGridItem.swift */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
 		F8EB61B827DD17A500342898 = {
 			isa = PBXGroup;
 			children = (
@@ -356,8 +369,9 @@
 		F8EB620D27DF8A9B00342898 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F8E834DF280D828B00231826 /* Search */,
+				F8E834E8280D985C00231826 /* Albums */,
 				F8DF5CA627E12B8C00CF2FAE /* Artists */,
+				F8E834DF280D828B00231826 /* Search */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -535,10 +549,12 @@
 				F8EB620C27DE661400342898 /* SearchModel.swift in Sources */,
 				F8DF5C9C27E0BA4A00CF2FAE /* BindingExtensions.swift in Sources */,
 				F8DF5CA527E12A4A00CF2FAE /* AsyncImageView.swift in Sources */,
+				F8E834EA280D98A100231826 /* AlbumResultView.swift in Sources */,
 				F8DF5CA227E129FF00CF2FAE /* ImageCache.swift in Sources */,
 				F8D8666F27E6A4AE00AB892B /* LibraryView.swift in Sources */,
 				F8E834E1280D82CE00231826 /* SearchSceneFactory.swift in Sources */,
 				F8E3E7A027E49F4E0096834C /* DashboardCoordinatorView.swift in Sources */,
+				F8E834EC280D997A00231826 /* AlbumResultGridItem.swift in Sources */,
 				F8E834DB280D814500231826 /* ViewExtensions.swift in Sources */,
 				F8E834D8280D802600231826 /* BottomTabBarView.swift in Sources */,
 				F8DF5C9E27E0BE1B00CF2FAE /* ArtistsResultView.swift in Sources */,

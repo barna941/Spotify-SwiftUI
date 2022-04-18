@@ -22,28 +22,31 @@ struct SearchResultsView: View {
             )
 
         case .album:
-            AlbumsResultView()
+            AlbumResultView(
+                topInset: topInset,
+                albums: Binding(get: { searchResults.albums }),
+                didSelectAlbum: { album in
+                    print(album)
+                }
+            )
 
         case .track:
-            AlbumsResultView()
+            AlbumResultView(
+                topInset: topInset,
+                albums: Binding(get: { searchResults.albums }),
+                didSelectAlbum: { album in
+                    print(album)
+                }
+            )
 
         case .playlist:
-            AlbumsResultView()
-        }
-    }
-}
-
-struct AlbumsResultView: View {
-    var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(0..<100) { item in
-                    Image(systemName: "music.quarternote.3")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-                        .foregroundColor(Color.textPrimary)
+            AlbumResultView(
+                topInset: topInset,
+                albums: Binding(get: { searchResults.albums }),
+                didSelectAlbum: { album in
+                    print(album)
                 }
-            }
+            )
         }
     }
 }
