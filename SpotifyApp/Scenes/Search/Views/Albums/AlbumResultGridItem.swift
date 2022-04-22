@@ -22,12 +22,12 @@ struct AlbumResultGridItem: View {
                     .foregroundColor(.textPrimary)
 
                 Text(album.artist)
-                    .font(.body)
+                    .font(.callout)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.textSecondary)
 
                 Text(album.releaseYear)
-                    .font(.body)
+                    .font(.callout)
                     .foregroundColor(.textSecondary)
             }
         }

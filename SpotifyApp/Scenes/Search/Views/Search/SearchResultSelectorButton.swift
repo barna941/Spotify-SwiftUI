@@ -22,7 +22,7 @@ struct SearchResultSelectorButton: View {
             },
             label: {
                 Text(searchType.name)
-                    .font(.title3)
+                    .font(.body)
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                     .overlay(

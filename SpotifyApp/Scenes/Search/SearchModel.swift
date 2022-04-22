@@ -22,7 +22,18 @@ enum SearchModel {
         case playlist
 
         var id: String { rawValue }
-        var name: String { rawValue }
+        var name: String {
+            switch self {
+            case .artist:
+                return "Artists"
+            case .album:
+                return "Albums"
+            case .track:
+                return "Tracks"
+            case .playlist:
+                return "Playlists"
+            }
+        }
     }
 }
 
@@ -35,7 +46,7 @@ extension SearchModel {
 }
 
 extension SearchModel {
-    struct Album: Identifiable {
+    struct Album: Identifiable, Equatable, Hashable {
         let id: String
         let artist: String
         let name: String

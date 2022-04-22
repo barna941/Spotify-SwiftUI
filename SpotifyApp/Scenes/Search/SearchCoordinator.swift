@@ -3,7 +3,7 @@ import SwiftUI
 enum SearchRoute: Hashable {
     case search
     case artistDetails(SearchModel.Artist)
-    case albumDetails
+    case albumDetails(SearchModel.Album)
 }
 
 protocol SearchCoordinatorProtocol {
@@ -27,8 +27,8 @@ final class SearchCoordinator: SearchCoordinatorProtocol, ObservableObject {
             sceneFactory.createSearchView(coordinator: self)
         case let .artistDetails(artist):
             sceneFactory.createArtistDetailsView(artist: artist)
-        case .albumDetails:
-            sceneFactory.createSearchView(coordinator: self)
+        case let .albumDetails(album):
+            sceneFactory.createAlbumDetailsView(album: album)
         }
     }
 }

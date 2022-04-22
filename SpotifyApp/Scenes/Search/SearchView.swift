@@ -17,6 +17,12 @@ struct SearchView: View {
                 searchResults: $viewModel.searchResults,
                 didSelectArtist: { artist in
                     viewModel.didSelectArtist(artist: artist)
+                },
+                didSelectAlbum: { album in
+                    viewModel.didSelectAlbum(album: album)
+                },
+                didSelectPlaylist: { playlist in
+                    print(playlist)
                 }
             )
 

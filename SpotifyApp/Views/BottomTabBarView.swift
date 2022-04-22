@@ -8,7 +8,7 @@ struct BottomTabBarView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             LinearGradient(
-                gradient: Gradient(colors: [Color.background, Color.background, Color.background, .clear]),
+                gradient: Gradient(colors: [Color.background, Color.background, Color.background, Color.clear]),
                 startPoint: .bottom,
                 endPoint: .top
             ).ignoresSafeArea()

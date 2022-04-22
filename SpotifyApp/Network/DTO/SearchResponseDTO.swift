@@ -46,14 +46,14 @@ struct TrackDTO: Decodable {
         case id
         case name
         case artists
-        case images
+        case album
         case releaseDate = "release_date"
     }
 
     let id: String
     let name: String
     let artists: [ArtistDTO]
-    let images: [ImageDTO]?
+    let album: AlbumDTO?
     let releaseDate: String?
 }
 

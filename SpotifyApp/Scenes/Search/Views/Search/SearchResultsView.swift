@@ -9,6 +9,8 @@ struct SearchResultsView: View {
     var searchResults: SearchModel.Result
 
     let didSelectArtist: ((SearchModel.Artist) -> Void)?
+    let didSelectAlbum: ((SearchModel.Album) -> Void)?
+    let didSelectPlaylist: ((SearchModel.Playlist) -> Void)?
 
     var body: some View {
         switch selectedResultType {
@@ -26,25 +28,22 @@ struct SearchResultsView: View {
                 topInset: topInset,
                 albums: Binding(get: { searchResults.albums }),
                 didSelectAlbum: { album in
-                    print(album)
+                    didSelectAlbum?(album)
                 }
             )
 
         case .track:
-            AlbumResultView(
+            TrackResultView(
                 topInset: topInset,
-                albums: Binding(get: { searchResults.albums }),
-                didSelectAlbum: { album in
-                    print(album)
-                }
+                tracks: Binding(get: { searchResults.tracks })
             )
 
         case .playlist:
-            AlbumResultView(
+            PlaylistResultView(
                 topInset: topInset,
-                albums: Binding(get: { searchResults.albums }),
-                didSelectAlbum: { album in
-                    print(album)
+                playlists: Binding(get: { searchResults.playlists }),
+                didSelectPlaylist: { playlist in
+                    didSelectPlaylist?(playlist)
                 }
             )
         }
@@ -59,7 +58,9 @@ struct SearchResultsView_Previews: PreviewProvider {
                 topInset: 0,
                 selectedResultType: .constant(.artist),
                 searchResults: .constant(SearchModel.Result()),
-                didSelectArtist: nil
+                didSelectArtist: nil,
+                didSelectAlbum: nil,
+                didSelectPlaylist: nil
             )
         }
     }

@@ -28,6 +28,10 @@ final class SearchViewModel: ObservableObject {
     func didSelectArtist(artist: SearchModel.Artist) {
         coordinator.currentRoute = .artistDetails(artist)
     }
+
+    func didSelectAlbum(album: SearchModel.Album) {
+        coordinator.currentRoute = .albumDetails(album)
+    }
 }
 
 extension SearchViewModel {
@@ -83,7 +87,7 @@ extension SearchViewModel {
             id: dto.id,
             name: dto.name,
             artist: dto.artists.first?.name ?? "",
-            imageUrl: dto.images?.first?.url
+            imageUrl: dto.album?.images?.first?.url
         )
     }
 
