@@ -2,16 +2,6 @@ import Alamofire
 import Foundation
 import Combine
 
-protocol SpotifyApi {
-    var baseUrl: URL { get }
-}
-
-extension SpotifyApi {
-    var baseUrl: URL {
-        URL(string: "https://api.spotify.com/v1")!
-    }
-}
-
 protocol SearchApiProtocol: SpotifyApi {
     func search(request: SearchRequestDTO) -> AnyPublisher<SearchResponseDTO, Error>
 }

@@ -17,7 +17,8 @@ final class DependencyProvider {
                 DashboardAssembly(),
                 HomeAssembly(),
                 SearchAssembly(),
-                LibraryAssembly()
+                LibraryAssembly(),
+                AlbumAssembly()
             ]
         )
     }
@@ -47,6 +48,9 @@ final class NetworkAssembly: Assembly {
         }
         container.register(SearchApiProtocol.self) { r in
             SearchApi(client: r.resolve(NetworkClientProtocol.self)!)
+        }
+        container.register(AlbumApiProtocol.self) { r in
+            AlbumApi(client: r.resolve(NetworkClientProtocol.self)!)
         }
     }
 }
@@ -98,6 +102,17 @@ final class LibraryAssembly: Assembly {
     func assemble(container: Container) {
         container.register(LibrarySceneFactoryProtocol.self) { _ in
             LibrarySceneFactory()
+        }
+    }
+}
+
+final class AlbumAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(AlbumDetailsViewModel.self) { r, album in
+            AlbumDetailsViewModel(album: album, interactor: r.resolve(AlbumDetailsInteractorProtocol.self)!)
+        }
+        container.register(AlbumDetailsInteractorProtocol.self) { r in
+            AlbumDetailsInteractor(albumApi: r.resolve(AlbumApiProtocol.self)!)
         }
     }
 }

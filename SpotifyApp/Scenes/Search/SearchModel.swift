@@ -52,6 +52,7 @@ extension SearchModel {
         let name: String
         let releaseYear: String
         let imageUrl: String?
+        let albumType: String
     }
 }
 

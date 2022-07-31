@@ -43,7 +43,8 @@ struct AlbumResultGridItem_Previews: PreviewProvider {
                 artist: "TOOL",
                 name: "Lateralus",
                 releaseYear: "2001",
-                imageUrl: "https://i.scdn.co/image/ab67616d00001e02ca41a947c13b78749c4953b1"
+                imageUrl: "https://i.scdn.co/image/ab67616d00001e02ca41a947c13b78749c4953b1",
+                albumType: "Album"
             )
         )
         .background(Color.background)

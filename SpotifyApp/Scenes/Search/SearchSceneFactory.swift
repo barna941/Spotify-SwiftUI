@@ -23,6 +23,8 @@ struct SearchSceneFactory: SearchSceneFactoryProtocol {
     }
 
     func createAlbumDetailsView(album: SearchModel.Album) -> AlbumDetailsView {
-        AlbumDetailsView(album: album)
+        AlbumDetailsView(
+            viewModel: DependencyProvider.resolver.resolve(AlbumDetailsViewModel.self, argument: album)!
+        )
     }
 }

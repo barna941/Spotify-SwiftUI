@@ -13,8 +13,6 @@ struct DashboardCoordinatorView: View {
         self.coordinator = coordinator
         self.tabs = tabs
         self.currentTab = tabs.first ?? .home
-
-        configureTabBarAppearance()
     }
 
     var body: some View {
@@ -31,12 +29,6 @@ struct DashboardCoordinatorView: View {
 
             BottomTabBarView(currentTab: $currentTab, tabs: tabs)
         }
-    }
-
-    private func configureTabBarAppearance() {
-        let appearance = UITabBarAppearance()
-        appearance.configureWithTransparentBackground()
-        UITabBar.appearance().standardAppearance = appearance
     }
 }
 

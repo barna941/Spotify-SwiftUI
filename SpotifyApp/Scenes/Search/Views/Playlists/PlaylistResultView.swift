@@ -43,17 +43,17 @@ struct PlaylistResultView_Previews: PreviewProvider {
             topInset: 0,
             playlists: .constant([
                 SearchModel.Playlist(
-                    id: "37i9dQZF1DZ06evO1sZyol",
+                    id: "37i9dQZF1DZ06evO1sZyola",
                     name: "This Is TOOL",
                     imageUrl: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO1sZyol-large.jpg"
                 ),
                 SearchModel.Playlist(
-                    id: "37i9dQZF1DZ06evO1sZyol",
+                    id: "37i9dQZF1DZ06evO1sZyolb",
                     name: "This Is TOOL",
                     imageUrl: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO1sZyol-large.jpg"
                 ),
                 SearchModel.Playlist(
-                    id: "37i9dQZF1DZ06evO1sZyol",
+                    id: "37i9dQZF1DZ06evO1sZyolc",
                     name: "This Is TOOL",
                     imageUrl: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO1sZyol-large.jpg"
                 )

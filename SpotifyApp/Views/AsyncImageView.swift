@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct AsyncImageView: View {
-    private let url: URL
+    private let url: URL?
 
     @StateObject
     private var imageLoader = ImageLoader(imageCache: DependencyProvider.resolver.resolve(ImageCaching.self)!)
 
-    init(url: URL) {
+    init(url: URL?) {
         self.url = url
     }
 
@@ -22,7 +22,8 @@ struct AsyncImageView: View {
             }
         }
         .onAppear {
-            imageLoader.loadImage(from: url)
+            guard let unwrappedUrl = url else { return }
+            imageLoader.loadImage(from: unwrappedUrl)
         }
     }
 }

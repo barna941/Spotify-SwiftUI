@@ -1,13 +1,13 @@
 import Foundation
 
 struct SearchResponseDTO: Decodable {
-    let artists: SearchItemDTO<ArtistDTO>
-    let albums: SearchItemDTO<AlbumDTO>
-    let tracks: SearchItemDTO<TrackDTO>
-    let playlists: SearchItemDTO<PlaylistDTO>
+    let artists: BaseItemDTO<ArtistDTO>
+    let albums: BaseItemDTO<AlbumDTO>
+    let tracks: BaseItemDTO<TrackDTO>
+    let playlists: BaseItemDTO<PlaylistDTO>
 }
 
-struct SearchItemDTO<Item: Decodable>: Decodable {
+struct BaseItemDTO<Item: Decodable>: Decodable {
     let offset: Int
     let limit: Int
     let total: Int
@@ -31,6 +31,7 @@ struct AlbumDTO: Decodable {
         case images
         case name
         case releaseDate = "release_date"
+        case albumType = "album_type"
     }
 
     let id: String
@@ -39,6 +40,7 @@ struct AlbumDTO: Decodable {
     let images: [ImageDTO]?
     let name: String
     let releaseDate: String
+    let albumType: String
 }
 
 struct TrackDTO: Decodable {

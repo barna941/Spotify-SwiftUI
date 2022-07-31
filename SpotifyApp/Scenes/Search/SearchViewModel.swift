@@ -78,7 +78,8 @@ extension SearchViewModel {
             artist: dto.artists.first?.name ?? "",
             name: dto.name,
             releaseYear: year(from: dto.releaseDate),
-            imageUrl: dto.images?.first?.url
+            imageUrl: dto.images?.first?.url,
+            albumType: dto.albumType
         )
     }
 
