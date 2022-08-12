@@ -109,7 +109,11 @@ final class LibraryAssembly: Assembly {
 final class AlbumAssembly: Assembly {
     func assemble(container: Container) {
         container.register(AlbumDetailsViewModel.self) { r, album in
-            AlbumDetailsViewModel(album: album, interactor: r.resolve(AlbumDetailsInteractorProtocol.self)!)
+            AlbumDetailsViewModel(
+                album: album,
+                interactor: r.resolve(AlbumDetailsInteractorProtocol.self)!,
+                imageLoader: ImageLoader(imageCache: DependencyProvider.resolver.resolve(ImageCaching.self)!)
+            )
         }
         container.register(AlbumDetailsInteractorProtocol.self) { r in
             AlbumDetailsInteractor(albumApi: r.resolve(AlbumApiProtocol.self)!)

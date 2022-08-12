@@ -44,6 +44,8 @@
 		F8EAEE092896E488009F0D5A /* AlbumTracksResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EAEE082896E488009F0D5A /* AlbumTracksResponseDTO.swift */; };
 		F8EAEE0B2896ECA3009F0D5A /* AlbumDetailsTrackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EAEE0A2896ECA3009F0D5A /* AlbumDetailsTrackRow.swift */; };
 		F8EAEE0D289713D7009F0D5A /* AlbumHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EAEE0C289713D7009F0D5A /* AlbumHeaderView.swift */; };
+		F8EAEE0F28996340009F0D5A /* OffsetObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EAEE0E28996340009F0D5A /* OffsetObservableScrollView.swift */; };
+		F8EAEE11289C5D13009F0D5A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EAEE10289C5D13009F0D5A /* UIImageExtensions.swift */; };
 		F8EB61C527DD17A600342898 /* SpotifyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EB61C427DD17A600342898 /* SpotifyAppApp.swift */; };
 		F8EB61C927DD17AA00342898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EB61C827DD17AA00342898 /* Assets.xcassets */; };
 		F8EB61CC27DD17AA00342898 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8EB61CB27DD17AA00342898 /* Preview Assets.xcassets */; };
@@ -127,6 +129,8 @@
 		F8EAEE082896E488009F0D5A /* AlbumTracksResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTracksResponseDTO.swift; sourceTree = "<group>"; };
 		F8EAEE0A2896ECA3009F0D5A /* AlbumDetailsTrackRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsTrackRow.swift; sourceTree = "<group>"; };
 		F8EAEE0C289713D7009F0D5A /* AlbumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumHeaderView.swift; sourceTree = "<group>"; };
+		F8EAEE0E28996340009F0D5A /* OffsetObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetObservableScrollView.swift; sourceTree = "<group>"; };
+		F8EAEE10289C5D13009F0D5A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		F8EB61C127DD17A600342898 /* SpotifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8EB61C427DD17A600342898 /* SpotifyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAppApp.swift; sourceTree = "<group>"; };
 		F8EB61C827DD17AA00342898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				F8E834D7280D802600231826 /* BottomTabBarView.swift */,
 				F8D8666A27E69F9F00AB892B /* TabBarButton.swift */,
 				F8EAEDFC2896DB21009F0D5A /* ColoredBackgroundView.swift */,
+				F8EAEE0E28996340009F0D5A /* OffsetObservableScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				F8DF5C9F27E129BB00CF2FAE /* ImageLoader.swift */,
 				F8DF5CA127E129FF00CF2FAE /* ImageCache.swift */,
 				F8E834DA280D814500231826 /* ViewExtensions.swift */,
+				F8EAEE10289C5D13009F0D5A /* UIImageExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				F8EAEE0B2896ECA3009F0D5A /* AlbumDetailsTrackRow.swift in Sources */,
 				F8EAEE052896DECB009F0D5A /* AlbumApi.swift in Sources */,
 				F8DF5CA827E12B9A00CF2FAE /* ArtistResultRow.swift in Sources */,
+				F8EAEE11289C5D13009F0D5A /* UIImageExtensions.swift in Sources */,
 				F8EB620F27DF8AA700342898 /* SearchView.swift in Sources */,
 				F8D8667127E6A50300AB892B /* HomeView.swift in Sources */,
 				F8EB61F927DD1B7600342898 /* SearchRequestDTO.swift in Sources */,
@@ -641,6 +648,7 @@
 				F8E83500281342B500231826 /* TrackResultView.swift in Sources */,
 				F8D8666B27E69F9F00AB892B /* TabBarButton.swift in Sources */,
 				F8EB621627DF8C3500342898 /* SearchCoordinator.swift in Sources */,
+				F8EAEE0F28996340009F0D5A /* OffsetObservableScrollView.swift in Sources */,
 				F8EAEDFD2896DB22009F0D5A /* ColoredBackgroundView.swift in Sources */,
 				F8EB621C27DF9D9C00342898 /* AppCoordinator.swift in Sources */,
 				F8EB61FB27DD1BA900342898 /* SearchResponseDTO.swift in Sources */,

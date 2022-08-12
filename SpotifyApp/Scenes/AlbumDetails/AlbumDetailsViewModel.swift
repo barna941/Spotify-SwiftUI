@@ -1,18 +1,23 @@
 import Combine
+import UIKit
 
 final class AlbumDetailsViewModel: ObservableObject {
     private let album: SearchModel.Album
     private let interactor: AlbumDetailsInteractorProtocol
+    private let imageLoader: ImageLoader
     private var cancellables = Set<AnyCancellable>()
 
     @Published
     var tracks = [AlbumModel.Track]()
     @Published
     var details = AlbumModel.Details(artistName: "", albumName: "", imageUrl: nil, year: "", albumType: "")
+    @Published
+    var headerColor: UIColor = .clear
 
-    init(album: SearchModel.Album, interactor: AlbumDetailsInteractorProtocol) {
+    init(album: SearchModel.Album, interactor: AlbumDetailsInteractorProtocol, imageLoader: ImageLoader) {
         self.album = album
         self.interactor = interactor
+        self.imageLoader = imageLoader
 
         details = AlbumModel.Details(
             artistName: album.artist,
@@ -21,7 +26,10 @@ final class AlbumDetailsViewModel: ObservableObject {
             year: album.releaseYear,
             albumType: album.albumType.capitalized
         )
+
         bindAlbumTracksFetch()
+        bindImageLoad()
+        loadImageIfNeeded()
     }
 
     private func bindAlbumTracksFetch() {
@@ -40,5 +48,17 @@ final class AlbumDetailsViewModel: ObservableObject {
             .replaceError(with: [])
             .assign(to: \.tracks, on: self)
             .store(in: &cancellables)
+    }
+
+    private func bindImageLoad() {
+        imageLoader.$image
+            .compactMap { $0?.averageColor }
+            .assign(to: \.headerColor, on: self)
+            .store(in: &cancellables)
+    }
+
+    private func loadImageIfNeeded() {
+        guard let imageUrl = album.imageUrl, let url = URL(string: imageUrl) else { return }
+        imageLoader.loadImage(from: url)
     }
 }

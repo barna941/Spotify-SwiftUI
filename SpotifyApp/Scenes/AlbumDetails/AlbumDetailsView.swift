@@ -1,45 +1,5 @@
 import SwiftUI
 
-private struct ScrollOffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGPoint = .zero
-
-    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
-}
-
-struct OffsetObservableScrollView<Content: View>: View {
-    let axes: Axis.Set
-    let showsIndicators: Bool
-    let offsetChanged: (CGPoint) -> Void
-    let content: Content
-    private let coordinateSpaceName = "scrollView"
-
-    init(
-        axes: Axis.Set = .vertical,
-        showsIndicators: Bool = true,
-        offsetChanged: @escaping (CGPoint) -> Void = { _ in },
-        @ViewBuilder content: () -> Content
-    ) {
-        self.axes = axes
-        self.showsIndicators = showsIndicators
-        self.offsetChanged = offsetChanged
-        self.content = content()
-    }
-
-    var body: some View {
-        ScrollView(axes, showsIndicators: showsIndicators) {
-            GeometryReader { geometry in
-                Color.clear.preference(
-                    key: ScrollOffsetPreferenceKey.self,
-                    value: geometry.frame(in: .named(coordinateSpaceName)).origin
-                )
-            }.frame(width: 0, height: 0)
-            content
-        }
-        .coordinateSpace(name: coordinateSpaceName)
-        .onPreferenceChange(ScrollOffsetPreferenceKey.self, perform: offsetChanged)
-    }
-}
-
 struct AlbumDetailsView: View {
     private let imageWidthRatio: CGFloat = 0.65
 
@@ -49,20 +9,15 @@ struct AlbumDetailsView: View {
     @State
     private var yOffset: CGFloat = 0
 
-    private func scaleForImage(geometry: GeometryProxy) -> CGFloat {
-        let fullImageHeight = imageWidth(geometry: geometry)
-        let ratio = (fullImageHeight - (-yOffset)) / fullImageHeight
-        return ratio
-    }
-
-    private func imageWidth(geometry: GeometryProxy) -> CGFloat {
-        geometry.size.width * imageWidthRatio
-    }
-
     var body: some View {
         ColoredBackgroundView(hideBackButton: false) {
             GeometryReader { geometry in
                 ZStack(alignment: .top) {
+                    Color(viewModel.headerColor)
+                        .frame(height: imageWidth(geometry: geometry) + 16)
+                        .edgesIgnoringSafeArea(.top)
+                        .blur(radius: 32)
+
                     HStack {
                         Spacer()
 
@@ -70,7 +25,9 @@ struct AlbumDetailsView: View {
                             .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                             .frame(width: imageWidth(geometry: geometry))
                             .scaleEffect(scaleForImage(geometry: geometry), anchor: .center)
-                            .opacity(scaleForImage(geometry: geometry))
+                            .opacity(alphaForImage(geometry: geometry))
+                            .shadow(radius: 24)
+                            .offset(x: .zero, y: offsetForImage(geometry: geometry))
 
                         Spacer()
                     }
@@ -101,6 +58,43 @@ struct AlbumDetailsView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Animation calculations
+
+extension AlbumDetailsView {
+    private func alphaForImage(geometry: GeometryProxy) -> CGFloat {
+        let offset = -yOffset
+        let fullImageHeight = imageWidth(geometry: geometry)
+        let minValue = fullImageHeight * 0.5
+        let maxValue = fullImageHeight
+        let alpha = 1 - max(0, min(1, offset / (maxValue - minValue)))
+        return alpha
+    }
+
+    private func scaleForImage(geometry: GeometryProxy) -> CGFloat {
+        let offset = -yOffset
+        let fullImageHeight = imageWidth(geometry: geometry)
+        var ratio = (fullImageHeight - offset) / fullImageHeight
+        if ratio > 1 {
+            let diff = ratio - 1
+            ratio = 1 + diff * (1 - diff)
+        } else {
+            let diff = 1 - ratio
+            ratio = (diff + 1) * ratio
+        }
+        return ratio
+    }
+
+    private func offsetForImage(geometry: GeometryProxy) -> CGFloat {
+        let scale = scaleForImage(geometry: geometry)
+        let offset = (scale - 1) * 80
+        return offset
+    }
+
+    private func imageWidth(geometry: GeometryProxy) -> CGFloat {
+        geometry.size.width * imageWidthRatio
     }
 }
 

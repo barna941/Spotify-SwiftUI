@@ -9,7 +9,7 @@ struct AlbumDetailsTrackRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(track.name)
                     .foregroundColor(Color.textPrimary)
-                    .font(.body)
+                    .font(.body.bold())
 
                 Text(artistName)
                     .foregroundColor(Color.textSecondary)

@@ -13,4 +13,4 @@ final class ClientRequestInterceptor: RequestInterceptor {
     }
 }
 
-private let token = "BQCkIFTpsE8p8wJv1vjNCLZA6M-xCHkwvxZITgBVO1JxajUAwoIiuSniwI98Q9LjX8lGczY6wkgoW2cRdGpvQN6EOFtdOAq_xgB16Z9rRJsiwIakh8vU3diaeGR1V-wK1UmYkVQaQ7W5y30aMokjNG2rcziQtU5eXN58zCpP2WgTt72mDWBeF9tabQ"
+private let token = "insert token"
